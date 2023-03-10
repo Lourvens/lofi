@@ -2,18 +2,22 @@ import React from "react";
 
 export type TypeMode = "list" | "loop" | "random";
 
-type trackProp = {
+export type trackProp = {
   activeTrack: number;
   playMode: TypeMode;
+  amountTracks: number;
   updateMode: (value: TypeMode) => void;
-  updateTrack: (value: number) => void;
+  playNext: () => void;
+  updateActiveTrack: (value: number) => void;
 };
 
 const initialState: trackProp = {
   activeTrack: 0,
   playMode: "list",
+  amountTracks: 0,
   updateMode() {},
-  updateTrack() {},
+  playNext() {},
+  updateActiveTrack() {},
 };
 
 const trackContext = React.createContext<trackProp>(initialState);

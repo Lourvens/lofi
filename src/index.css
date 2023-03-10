@@ -6,3 +6,12 @@ body
 {
  @apply bg-primary-900
 }
+
+.scrollbar::-webkit-scrollbar {
+  @apply w-2 bg-cyan-100 bg-opacity-10 rounded-md;
+}
+
+
+.scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-cyan-900 rounded-md;
+}

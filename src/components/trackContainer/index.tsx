@@ -1,26 +1,12 @@
-import React, { useState } from "react";
-import { TrackProvier, TypeMode } from "./soundPlayContext";
+import React from "react";
 import Badge from "../Badge";
-import ButtonList from "./buttonList";
-import MusicList from "./musicList";
+import ButtonList from "./components/buttonList";
+import Row from "./components/row";
+import SoundPlayProviderWrapper from "./soundPlayWrapper";
 
 const TrackContainer = () => {
-  const [playMode, setPlayMode] = useState<TypeMode>("list");
-  const [selectTrack, setSelectTrack] = useState(0);
-
   return (
-    <TrackProvier
-      value={{
-        playMode,
-        activeTrack: selectTrack,
-        updateMode(value) {
-          setPlayMode(value);
-        },
-        updateTrack(value) {
-          setSelectTrack(value);
-        },
-      }}
-    >
+    <SoundPlayProviderWrapper>
       <div>
         <div className="flex justify-between items-center mb-10">
           <Badge title="sound" classNameIcon="ri-disc-line" />
@@ -28,9 +14,9 @@ const TrackContainer = () => {
             <ButtonList />
           </div>
         </div>
-        <MusicList />
+        <Row />
       </div>
-    </TrackProvier>
+    </SoundPlayProviderWrapper>
   );
 };
 

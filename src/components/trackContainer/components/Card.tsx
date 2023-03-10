@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { trackType } from "./trackContainer/trackListdata";
-import { useSound } from "../hook/use-sound";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { trackType } from "../trackListdata";
+import { useSound } from "../../../hook/use-sound";
+import trackContext from "../soundPlayContext";
 
 interface CardProp extends trackType {
   active: boolean;
@@ -14,15 +15,29 @@ const Card = ({
   soundURl: url,
   askForPlaying,
 }: CardProp) => {
-  const audio = useSound(url);
+  const audio = useSound(url, { onEnded: onMusicend });
   const [showButton, setShowButton] = useState(true);
+  const { playNext, playMode } = useContext(trackContext);
+  const mounted = useRef(false);
 
   useEffect(() => {
+    if (!mounted.current) mounted.current = true;
+    if (mounted.current && active && audio.status != "play") {
+      audio.play();
+    }
     if (!active && audio.status == "play") {
       audio.stop();
     }
     if (!active) setShowButton(false);
   }, [active]);
+
+  function onMusicend() {
+    if (playMode == "loop") {
+      audio.play();
+    } else {
+      playNext();
+    }
+  }
 
   return (
     <div
