@@ -9,7 +9,7 @@ const Header = () => {
       </h1>
       <ul className="text-3xl">
         <li>
-          <a href="">
+          <a href="https://github.com/Lourvens/lofi" target="_blank">
             <i className="ri-github-fill"></i>
           </a>
         </li>
