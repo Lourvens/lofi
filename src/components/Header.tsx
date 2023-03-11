@@ -5,7 +5,8 @@ const Header = () => {
     <header className="py-8 flex justify-between items-center mb-20">
       <h1 className=" text-white inline-flex items-center">
         <i className="ri-router-line mr-2 text-2xl"></i>
-        <span className="capitalize text-xl font-bold">lo-fi</span>
+        <a href="/"><span className="capitalize text-xl font-bold">lo-fi</span></a>
+       
       </h1>
       <ul className="text-3xl">
         <li>
